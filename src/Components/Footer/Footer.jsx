@@ -17,19 +17,19 @@ const Footer = () => {
                 </aside>
                 <div className="flex gap-5">
                     <li className="text-white list-none">
-                        <Link>Home</Link>
+                        <Link to='/'>Home</Link>
                     </li>
                     <li className="text-white list-none">
-                        <Link>About</Link>
+                        <Link to='/addProduct'>Add Product</Link>
                     </li>
                     <li className="text-white list-none">
-                        <Link>Speakers</Link>
+                        <Link to="/myCarts">My Cart</Link>
                     </li>
                     <li className="text-white list-none">
-                        <Link>Login</Link>
+                        <Link to='/login'>Sign In</Link>
                     </li>
                     <li className="text-white list-none">
-                        <Link>Register</Link>
+                        <Link to='/register'>Sign Up</Link>
                     </li>
                 </div>
                 <div className="w-full px-4">
@@ -37,7 +37,10 @@ const Footer = () => {
                 </div>
                 <div className="flex flex-col text-center md:flex-row md:gap-10 items-center">
                     <div>
-                        <Link to='/' className="text-white font-bold text-3xl">Talk Expo</Link>
+                        <Link to='/' className="flex gap-2 items-center">
+                            <img className="w-10 h-10" src="https://i.ibb.co/Drx9h54/logo.png" alt="logo" />
+                            <span className="text-cyan-700 font-bold text-3xl">E Tech</span>
+                        </Link>
                     </div>
                     <div>
                         <p>Copyright © 2023 - All right reserved</p>

@@ -7,7 +7,7 @@ const Layout = () => {
     return (
         <div>
 
-            <header>
+            <header className="border-b">
                 {/* navbar */}
                 <Navbar></Navbar>
             </header>

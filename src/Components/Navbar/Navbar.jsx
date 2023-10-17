@@ -1,7 +1,21 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 
 const Navbar = () => {
+
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleSignOut = () => {
+        logOut()
+            .then(res => {
+                console.log(res);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
 
 
     const navLinks = <>
@@ -17,32 +31,42 @@ const Navbar = () => {
         </li>
         <li className="">
             <NavLink
-                to="/adsf"
+                to="/addProduct"
                 className={({ isActive, isPending }) =>
                     isPending ? "pending" : isActive ? "text-sky-600 rounded-none shadow-lg font-bold border-b-2 border-sky-600" : ""
                 }
             >
-                Abopu
+                Add Product
             </NavLink>
         </li>
         <li className="">
             <NavLink
-                to="/dd"
+                to="/myCarts"
                 className={({ isActive, isPending }) =>
                     isPending ? "pending" : isActive ? "text-sky-600 rounded-none shadow-lg font-bold border-b-2 border-sky-600" : ""
                 }
             >
-                Home
+                My Cart
             </NavLink>
         </li>
         <li className="">
             <NavLink
-                to="/a"
+                to="/login"
                 className={({ isActive, isPending }) =>
                     isPending ? "pending" : isActive ? "text-sky-600 rounded-none shadow-lg font-bold border-b-2 border-sky-600" : ""
                 }
             >
-                Home
+                Sign In
+            </NavLink>
+        </li>
+        <li className="">
+            <NavLink
+                to="/register"
+                className={({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? "text-sky-600 rounded-none shadow-lg font-bold border-b-2 border-sky-600" : ""
+                }
+            >
+                Sign Up
             </NavLink>
         </li>
     </>
@@ -70,12 +94,12 @@ const Navbar = () => {
                         {navLinks}
                     </ul>
                 </div>
-                {/* <div className="">
+                <div className="">
 
                     {user ? (
                         <div className="dropdown dropdown-end">
                             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                                <div className="w-10 border-2 border-[#152475] rounded-full">
+                                <div className="w-10 border-2 border-sky-700 rounded-full">
                                     <img src={user.photoURL} />
                                 </div>
                             </label>
@@ -84,17 +108,17 @@ const Navbar = () => {
                                 className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded w-60"
                             >
                                 <li>
-                                    <a className="justify-between text-md hover:bg-transparent font-bold text-[#152475]">
+                                    <a className="justify-between text-md hover:bg-transparent font-bold text-sky-700">
                                         {user.displayName}
                                     </a>
                                 </li>
                                 <li>
-                                    <span className="justify-between font-semibold hover:bg-transparent mb-2 text-[#152475]">{user.email}</span>
+                                    <span className="justify-between font-semibold hover:bg-transparent mb-2 text-sky-700">{user.email}</span>
                                 </li>
                                 <li>
                                     <button
                                         onClick={handleSignOut}
-                                        className="text-[#152475] text-center hover:bg-[#152475] hover:text-[white] font-semibold px-3 py-1 rounded border border-[#152475]"
+                                        className="text-sky-700 text-center hover:bg-sky-700 hover:text-[white] font-semibold px-3 py-1 rounded border border-sky-700"
                                     >
                                         Log Out
                                     </button>
@@ -104,14 +128,10 @@ const Navbar = () => {
                     ) : (
                         <Link to="/login">
                             {" "}
-                            <button onClick={handleSignOut} className="text-[#152475] hover:bg-[#152475] hover:text-[white] font-semibold px-3 py-1 rounded border border-[#152475]">Log In</button>{" "}
+                            <button onClick={handleSignOut} className="text-sky-700 hover:bg-sky-700 hover:text-[white] font-semibold px-3 py-1 rounded border border-sky-700">Log In</button>{" "}
                         </Link>
                     )}
 
-                </div> */}
-
-                <div>
-                    <button> ami </button>
                 </div>
 
             </div>
