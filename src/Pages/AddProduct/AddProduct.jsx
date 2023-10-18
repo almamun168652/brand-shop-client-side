@@ -6,9 +6,14 @@ import { useState } from "react";
 
 const AddProduct = () => {
 
-    const [selectedValue, setSelectedValue] = useState('');
+    const [brand, setBrand] = useState('');
 
-    const handleAddProduct = (event) => {
+    const handleSelectChange = (event) => {
+        setBrand(event.target.value);
+    };
+
+
+    const handleAddProduct = async (event) => {
         event.preventDefault();
         const form = event.target;
         const image = form.image.value;
@@ -24,15 +29,31 @@ const AddProduct = () => {
             description,
             rating,
             image,
-            selectedValue
+            brand
         };
 
-        console.log(product);
 
-    };
+        try {
+            const response = await fetch("http://localhost:5000/products", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(product),
+            });
+            const result = await response.json();
+            console.log(result);
 
-    const handleSelectChange = (event) => {
-        setSelectedValue(event.target.value);
+            if (result.acknowledged) {
+                alert("Product Added successfully");
+            }
+
+        } catch (error) {
+            console.log(error);
+        }
+
+        form.reset('');
+
     };
 
 
@@ -106,14 +127,14 @@ const AddProduct = () => {
                             <label className="label ">
                                 <span className="label-text text-lg text-black ">Brand Name</span>
                             </label>
-                            <select className="input input-bordered w-full" value={selectedValue} onChange={handleSelectChange}>
-                                <option selected >Choose Your Brand</option>
-                                <option value="option1">Apple</option>
-                                <option value="option1">Samsung</option>
-                                <option value="option1">Microsoft</option>
-                                <option value="option1">Sony</option>
-                                <option value="option1">Lg</option>
-                                <option value="option1">Panasonic</option>
+                            <select className="input input-bordered w-full" value={brand} onChange={handleSelectChange}>
+                                <option selected>Choose Your Brand</option>
+                                <option value="Apple">Apple</option>
+                                <option value="Samsung">Samsung</option>
+                                <option value="Microsoft">Microsoft</option>
+                                <option value="Sony">Sony</option>
+                                <option value="Lg">Lg</option>
+                                <option value="Panasonic">Panasonic</option>
                             </select>
                         </div>
 
@@ -162,3 +183,19 @@ const AddProduct = () => {
 };
 
 export default AddProduct;
+
+
+
+// try {
+//     const response = await fetch("http://localhost:5001/users", {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify(formData),
+//     });
+//     const result = await response.json();
+//     console.log(result);
+//   } catch (error) {
+//     console.log(error);
+//   }
