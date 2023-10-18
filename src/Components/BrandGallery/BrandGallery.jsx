@@ -19,7 +19,7 @@ const BrandGallery = () => {
 
     useEffect(() => {
 
-        const filterBrand = totalBrand.find(brand => brand.brand_name.toLowerCase() == brand_name.brand_name.toLowerCase());
+        const filterBrand = totalBrand.find(brand => brand.brand_name == brand_name.brand_name);
         setGBrand(filterBrand);
 
 
@@ -34,7 +34,7 @@ const BrandGallery = () => {
     }, [])
 
     useEffect(() => {
-        const filterData = bProducts.filter(product => product.brand.toLowerCase() == brand_name.brand_name.toLowerCase());
+        const filterData = bProducts.filter(product => product.brand == brand_name.brand_name);
         setFilterProducts(filterData);
     }, [bProducts, brand_name])
 
@@ -45,9 +45,6 @@ const BrandGallery = () => {
             <div className=' max-h-[80vh]'>
                 <GallerySlider gBrand={gBrand}></GallerySlider>
             </div>
-
-            {/* brand products */}
-            {/* flteredProducts */}
 
             <div>
                 {

@@ -4,7 +4,6 @@ import OneBrand from '../OneBrand/OneBrand';
 
 const Brands = ({brands}) => {
 
-    console.log(brands);
 
     return (
         <div className='max-w-screen-xl px-4 mx-auto my-20'>

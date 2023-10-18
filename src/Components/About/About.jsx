@@ -4,14 +4,10 @@ import { BsShieldCheck } from "react-icons/bs";
 const About = () => {
   return (
     <div className="max-w-7xl mx-auto py-20 px-5">
-      <h2 className="text-3xl text-blue-1 font-semibold mb-5 text-center">
-        About Automotive
-      </h2>
-      <p className=" text-gray-600 font-medium text-center max-w-3xl mx-auto mb-10">
-        Discover the future of driving at our showroom! Explore top models, get
-        expert advice, and enjoy special deals. Your dream car awaits. Drive in
-        today!
-      </p>
+      <div className='mb-6'>
+        <h1 className='text-center text-4xl font-bold'>About E Tech</h1>
+      </div>
+
       <div className="lg:flex gap-10">
         <div className="lg:w-1/2">
           <h2 className="text-xl text-blue-1 font-semibold mb-5 border-l-4 border-yellow-1 pl-3">

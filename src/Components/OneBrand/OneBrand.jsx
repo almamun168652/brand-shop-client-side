@@ -4,7 +4,7 @@ const OneBrand = ({ brand }) => {
 
     const { brand_name, img } = brand || {}
 
-    console.log(brand);
+
 
     return (
         <div>
