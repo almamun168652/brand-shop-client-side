@@ -7,6 +7,7 @@ import Register from "../Pages/Register/Register";
 import AddProduct from "../Pages/AddProduct/AddProduct";
 import MyCarts from "../Pages/MyCarts/MyCarts";
 import PrivateRoute from "./PrivateRoute";
+import BrandGallery from "../Components/BrandGallery/BrandGallery";
 
 const createdRoute = createBrowserRouter([
     {
@@ -16,7 +17,8 @@ const createdRoute = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <Home></Home>
+                element: <Home></Home>,
+                loader: ()=> fetch('/brand.json')
             },
             {
                 path: '/addProduct',
@@ -25,6 +27,11 @@ const createdRoute = createBrowserRouter([
             {
                 path: '/myCarts',
                 element: <PrivateRoute><MyCarts></MyCarts></PrivateRoute>
+            },
+            {
+                path: '/brand/:brand_name',
+                element: <PrivateRoute><BrandGallery></BrandGallery></PrivateRoute>,
+                loader: ()=> fetch('/brand.json')
             },
             {
                 path: '/login',
