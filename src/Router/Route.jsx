@@ -39,7 +39,7 @@ const createdRoute = createBrowserRouter([
             {
                 path: '/myCarts',
                 element: <PrivateRoute><MyCarts></MyCarts></PrivateRoute>,
-                loader: ()=> fetch(`https://brand-shop-server-ivtiu0s4h-almamun168652-gmailcom.vercel.app/carts`)
+                // loader: ()=> fetch(`https://brand-shop-server-ivtiu0s4h-almamun168652-gmailcom.vercel.app/carts`)
             },
             {
                 path: '/brand/:brand_name',
