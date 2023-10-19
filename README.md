@@ -1,8 +1,10 @@
-# React + Vite
+# E-Tech
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Live-Link: [Live-Link](https://brand-shop-bfc7f.web.app/)
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Project Features
+- You can use our E-Tech website to buy various technology and electronics brand product.
+- Here you can see 6 different brand of technology.
+- You must register on our E-Tech website to buy any product.
+- You can add the product to the cart for later purchase if you want.
+- Our E-Tech website is responsive to all devices, so you can visit our website using any devices.
