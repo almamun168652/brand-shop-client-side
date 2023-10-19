@@ -1,19 +1,14 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import CartCard from "../../Components/CartCard/CartCard";
+import { useLoaderData } from "react-router-dom";
 
 
 const MyCarts = () => {
 
     const [brandCarts, setBrandCarts] = useState([]);
 
-    useEffect(() => {
-
-        fetch('https://brand-shop-server-ivtiu0s4h-almamun168652-gmailcom.vercel.app/carts')
-            .then(res => res.json())
-            .then(data => setBrandCarts(data));
-
-    }, [])
-
+    const loadProduct = useLoaderData();
+    setBrandCarts(loadProduct);
 
 
     return (

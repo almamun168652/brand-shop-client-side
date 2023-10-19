@@ -51,7 +51,7 @@ const Navbar = () => {
             <NavLink
                 to="/"
                 className={({ isActive, isPending }) =>
-                    isPending ? "pending" : isActive ? "text-sky-600 dark:text-sky-600 dark:text-white rounded-none shadow-lg font-bold border-b-2 border-sky-600" : ""
+                    isPending ? "pending" : isActive ? "text-sky-600 dark:text-sky-600 rounded-none shadow-lg font-bold border-b-2 border-sky-600" : "dark:text-white"
                 }
             >
                 Home

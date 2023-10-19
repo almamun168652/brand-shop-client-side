@@ -186,17 +186,3 @@ const AddProduct = () => {
 export default AddProduct;
 
 
-
-// try {
-//     const response = await fetch("http://localhost:5001/users", {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify(formData),
-//     });
-//     const result = await response.json();
-//     console.log(result);
-//   } catch (error) {
-//     console.log(error);
-//   }
