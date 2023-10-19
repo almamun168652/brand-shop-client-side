@@ -1,9 +1,37 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
-
+import { MdOutlineDarkMode, MdOutlineLightMode } from 'react-icons/md';
 
 const Navbar = () => {
+
+
+    const [theme, setTheme] = useState(null);
+
+
+    useEffect(() => {
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            setTheme('dark');
+        } else {
+            setTheme('light');
+        }
+    }, [])
+
+
+    useEffect(() => {
+        if (theme === "dark") {
+            document.documentElement.classList.add("dark");
+        } else {
+            document.documentElement.classList.remove("dark");
+        }
+    }, [theme])
+
+
+
+    const handleThemeSwich = () => {
+        setTheme(theme === "dark" ? "light" : "dark");
+    }
+
 
     const { user, logOut } = useContext(AuthContext);
 
@@ -23,7 +51,7 @@ const Navbar = () => {
             <NavLink
                 to="/"
                 className={({ isActive, isPending }) =>
-                    isPending ? "pending" : isActive ? "text-sky-600 rounded-none shadow-lg font-bold border-b-2 border-sky-600" : ""
+                    isPending ? "pending" : isActive ? "text-sky-600 dark:text-sky-600 dark:text-white rounded-none shadow-lg font-bold border-b-2 border-sky-600" : ""
                 }
             >
                 Home
@@ -33,7 +61,7 @@ const Navbar = () => {
             <NavLink
                 to="/addProduct"
                 className={({ isActive, isPending }) =>
-                    isPending ? "pending" : isActive ? "text-sky-600 rounded-none shadow-lg font-bold border-b-2 border-sky-600" : ""
+                    isPending ? "pending" : isActive ? "text-sky-600 dark:text-sky-600 rounded-none shadow-lg font-bold border-b-2 border-sky-600" : "dark:text-white"
                 }
             >
                 Add Product
@@ -43,7 +71,7 @@ const Navbar = () => {
             <NavLink
                 to="/myCarts"
                 className={({ isActive, isPending }) =>
-                    isPending ? "pending" : isActive ? "text-sky-600 rounded-none shadow-lg font-bold border-b-2 border-sky-600" : ""
+                    isPending ? "pending" : isActive ? "text-sky-600 dark:text-sky-600 rounded-none shadow-lg font-bold border-b-2 border-sky-600" : "dark:text-white"
                 }
             >
                 My Cart
@@ -53,7 +81,7 @@ const Navbar = () => {
             <NavLink
                 to="/login"
                 className={({ isActive, isPending }) =>
-                    isPending ? "pending" : isActive ? "text-sky-600 rounded-none shadow-lg font-bold border-b-2 border-sky-600" : ""
+                    isPending ? "pending" : isActive ? "text-sky-600 dark:text-sky-600 rounded-none shadow-lg font-bold border-b-2 border-sky-600" : "dark:text-white"
                 }
             >
                 Sign In
@@ -63,7 +91,7 @@ const Navbar = () => {
             <NavLink
                 to="/register"
                 className={({ isActive, isPending }) =>
-                    isPending ? "pending" : isActive ? "text-sky-600 rounded-none shadow-lg font-bold border-b-2 border-sky-600" : ""
+                    isPending ? "pending" : isActive ? "text-sky-600 dark:text-sky-600 rounded-none shadow-lg font-bold border-b-2 border-sky-600" : "dark:text-white"
                 }
             >
                 Sign Up
@@ -74,7 +102,7 @@ const Navbar = () => {
 
     return (
         <div className="max-w-screen-xl mx-auto px-4">
-            <div className="navbar bg-base-100 flex justify-between items-center">
+            <div className="navbar bg-base-100 dark:bg-black flex justify-between items-center">
                 <div className="">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -94,43 +122,55 @@ const Navbar = () => {
                         {navLinks}
                     </ul>
                 </div>
-                <div className="">
+                <div className="flex gap-4">
 
-                    {user ? (
-                        <div className="dropdown dropdown-end">
-                            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                                <div className="w-10 border-2 border-sky-700 rounded-full">
-                                    <img src={user.photoURL} />
-                                </div>
-                            </label>
-                            <ul
-                                tabIndex={0}
-                                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded w-60"
-                            >
-                                <li>
-                                    <a className="justify-between text-md hover:bg-transparent font-bold text-sky-700">
-                                        {user.displayName}
-                                    </a>
-                                </li>
-                                <li>
-                                    <span className="justify-between font-semibold hover:bg-transparent mb-2 text-sky-700">{user.email}</span>
-                                </li>
-                                <li>
-                                    <button
-                                        onClick={handleSignOut}
-                                        className="text-sky-700 text-center hover:bg-sky-700 hover:text-[white] font-semibold px-3 py-1 rounded border border-sky-700"
-                                    >
-                                        Log Out
-                                    </button>
-                                </li>
-                            </ul>
-                        </div>
-                    ) : (
-                        <Link to="/login">
-                            {" "}
-                            <button onClick={handleSignOut} className="text-sky-700 hover:bg-sky-700 hover:text-[white] font-semibold px-3 py-1 rounded border border-sky-700">Log In</button>{" "}
-                        </Link>
-                    )}
+                    <div className="mt-1">
+                        {
+                            theme === "dark" ?
+                            <button onClick={handleThemeSwich} className="text-3xl dark:text-white"><MdOutlineLightMode /></button> :
+                            <button onClick={handleThemeSwich} className="text-3xl dark:text-white"><MdOutlineDarkMode /></button>
+                        }
+                    </div>
+
+                    <div>
+                        {user ? (
+                            <div className="dropdown dropdown-end">
+                                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                    <div className="w-10 border-2 border-sky-700 rounded-full">
+                                        <img src={user.photoURL} />
+                                    </div>
+                                </label>
+                                <ul
+                                    tabIndex={0}
+                                    className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded w-60 dark:bg-slate-900"
+                                >
+                                    <li>
+                                        <a className="justify-between text-md hover:bg-transparent font-bold text-sky-700">
+                                            {user.displayName}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <span className="justify-between font-semibold hover:bg-transparent mb-2 text-sky-700">{user.email}</span>
+                                    </li>
+                                    <li>
+                                        <button
+                                            onClick={handleSignOut}
+                                            className="text-sky-700 text-center hover:bg-sky-700 hover:text-[white] font-semibold px-3 py-1 rounded border border-sky-700"
+                                        >
+                                            Log Out
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        ) : (
+                            <Link to="/login">
+                                {" "}
+                                <button onClick={handleSignOut} className="text-sky-700 hover:bg-sky-700 hover:text-[white] font-semibold px-3 py-1 rounded border border-sky-700">Log In</button>{" "}
+                            </Link>
+                        )}
+                    </div>
+
+
 
                 </div>
 

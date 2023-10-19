@@ -9,7 +9,7 @@ const Brands = ({brands}) => {
         <div className='max-w-screen-xl px-4 mx-auto my-20'>
 
             <div className='mb-6'>
-                <h1 className='text-center text-4xl font-bold'>Our Brands</h1>
+                <h1 className='text-center dark:text-white text-4xl font-bold'>Our Brands</h1>
             </div>
 
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20'>

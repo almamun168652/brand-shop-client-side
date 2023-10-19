@@ -8,7 +8,7 @@ const Features = () => {
     return (
         <div className='max-w-screen-xl px-4 mx-auto mb-10'>
             <div className='mb-6'>
-                <h1 className='text-center text-4xl font-bold'>Our Features</h1>
+                <h1 className='text-center text-4xl dark:text-white font-bold'>Our Features</h1>
             </div>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2'>
                 <div className='bg-sky-200 px-4 py-8 text-black flex gap-2 items-center justify-center'>

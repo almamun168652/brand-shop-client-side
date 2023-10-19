@@ -21,8 +21,8 @@ const MyCarts = () => {
             <div className='mb-6'>
                 {
                     brandCarts.length > 0 ?
-                    <h1 className='text-center text-4xl font-bold'>All Carts Here</h1> :
-                    <h1 className='text-center text-4xl my-40 font-bold'>No Carts Here</h1>
+                    <h1 className='text-center text-4xl dark:text-white font-bold'>All Carts Here</h1> :
+                    <h1 className='text-center text-4xl dark:text-white my-40 font-bold'>No Carts Here</h1>
                 }
             </div>
 

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import swal from "sweetalert";
 
 
 
@@ -45,7 +46,7 @@ const AddProduct = () => {
             console.log(result);
 
             if (result.acknowledged) {
-                alert("Product Added successfully");
+                swal("Done!", "Product Added Successfully", "success");
             }
 
         } catch (error) {

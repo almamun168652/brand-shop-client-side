@@ -1,6 +1,7 @@
 
 import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import swal from "sweetalert";
 
 
 const Update = () => {
@@ -49,7 +50,7 @@ const Update = () => {
             console.log(result);
 
             if (result.acknowledged) {
-                alert("Product updated successfully");
+                swal("Updated!", "Product Updated Successfully", "success");
             }
 
         } catch (error) {

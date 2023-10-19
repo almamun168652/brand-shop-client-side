@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
+import Swal from 'sweetalert2';
 
-const CartCard = ({ cart , setBrandCarts , brandCarts}) => {
+const CartCard = ({ cart, setBrandCarts, brandCarts }) => {
 
     console.log(brandCarts);
 
@@ -10,16 +11,35 @@ const CartCard = ({ cart , setBrandCarts , brandCarts}) => {
     const hanldeDelete = async (_id) => {
 
         try {
-            const response = await fetch(`http://localhost:5000/carts/${_id}`, {
-                method: "DELETE",
-            });
-            const result = await response.json();
-            if(result.deletedCount > 0){
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You want to delete it?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then( async (result) => {
+                if (result.isConfirmed) {
 
-                const filterCart = brandCarts.filter(cart => cart._id !== _id);
-                setBrandCarts(filterCart);
-                alert("Data deleted successfully");
-            }
+                    const response = await fetch(`http://localhost:5000/carts/${_id}`, {
+                        method: "DELETE",
+                    });
+                    const result = await response.json();
+                    if (result.deletedCount > 0) {
+
+                        const filterCart = brandCarts.filter(cart => cart._id !== _id);
+                        setBrandCarts(filterCart);
+                    }
+
+                    Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                    )
+                }
+            })
+
         } catch (error) {
             console.log(error);
         }
