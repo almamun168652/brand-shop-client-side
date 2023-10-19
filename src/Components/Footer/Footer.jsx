@@ -25,12 +25,6 @@ const Footer = () => {
                     <li className="text-white list-none">
                         <Link to="/myCarts">My Cart</Link>
                     </li>
-                    <li className="text-white list-none">
-                        <Link to='/login'>Sign In</Link>
-                    </li>
-                    <li className="text-white list-none">
-                        <Link to='/register'>Sign Up</Link>
-                    </li>
                 </div>
                 <div className="w-full px-4">
                     <div className="border-b w-full"></div>

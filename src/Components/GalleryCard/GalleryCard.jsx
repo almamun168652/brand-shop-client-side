@@ -51,12 +51,11 @@ const GalleryCard = ({ oneBrand }) => {
                 </div>
                 <div className="p-4 flex justify-between">
 
-                    <Link>
+                    <Link to={`/details/${_id}`}>
                         <button type="button" className="text-white bg-sky-700 hover:bg-sky-800 border border-sky-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Details</button>
-
                     </Link>
 
-                    <Link to={`/products/${_id}`}>
+                    <Link to={`/update/${_id}`}>
                         <button type="button" className="text-sky-700 hover:text-white border border-sky-700 hover:bg-sky-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Update</button>
                     </Link>
                 </div>

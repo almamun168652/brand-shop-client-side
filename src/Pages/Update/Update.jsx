@@ -136,7 +136,7 @@ const Update = () => {
                                 <span className="label-text text-lg text-black ">Brand Name</span>
                             </label>
                             <select className="input input-bordered w-full" value={optionBrand} onChange={handleSelectChange}>
-                                <option selected>Choose Your Brand</option>
+                                <option>Choose Your Brand</option>
                                 <option value="Apple">Apple</option>
                                 <option value="Samsung">Samsung</option>
                                 <option value="Microsoft">Microsoft</option>
