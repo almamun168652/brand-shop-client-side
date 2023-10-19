@@ -29,12 +29,12 @@ const createdRoute = createBrowserRouter([
             {
                 path: '/details/:id',
                 element: <PrivateRoute><Details></Details></PrivateRoute>,
-                loader: ({params})=> fetch(`http://localhost:5000/products/${params.id}`) 
+                loader: ({params})=> fetch(`https://brand-shop-server-ivtiu0s4h-almamun168652-gmailcom.vercel.app/products/${params.id}`) 
             },
             {
                 path: '/update/:id',
                 element: <PrivateRoute><Update></Update></PrivateRoute>,
-                loader: ({params})=> fetch(`http://localhost:5000/products/${params.id}`) 
+                loader: ({params})=> fetch(`https://brand-shop-server-ivtiu0s4h-almamun168652-gmailcom.vercel.app/products/${params.id}`) 
             },
             {
                 path: '/myCarts',

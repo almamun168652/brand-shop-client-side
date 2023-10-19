@@ -35,7 +35,7 @@ const AddProduct = () => {
 
 
         try {
-            const response = await fetch("http://localhost:5000/products", {
+            const response = await fetch("https://brand-shop-server-ivtiu0s4h-almamun168652-gmailcom.vercel.app/products", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

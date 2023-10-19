@@ -9,7 +9,7 @@ const Update = () => {
 
     const singleBrand = useLoaderData();
 
-    const { _id ,  image, name, type, price, description, rating, brand } = singleBrand || {}
+    const { _id, image, name, type, price, description, rating, brand } = singleBrand || {}
 
     const [optionBrand, setOptionBrand] = useState(brand);
 
@@ -39,7 +39,7 @@ const Update = () => {
 
 
         try {
-            const response = await fetch(`http://localhost:5000/products/${_id}`, {
+            const response = await fetch(`https://brand-shop-server-ivtiu0s4h-almamun168652-gmailcom.vercel.app/products/${_id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",

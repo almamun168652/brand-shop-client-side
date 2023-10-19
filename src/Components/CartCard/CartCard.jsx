@@ -22,7 +22,7 @@ const CartCard = ({ cart, setBrandCarts, brandCarts }) => {
             }).then( async (result) => {
                 if (result.isConfirmed) {
 
-                    const response = await fetch(`http://localhost:5000/carts/${_id}`, {
+                    const response = await fetch(`https://brand-shop-server-ivtiu0s4h-almamun168652-gmailcom.vercel.app/carts/${_id}`, {
                         method: "DELETE",
                     });
                     const result = await response.json();
