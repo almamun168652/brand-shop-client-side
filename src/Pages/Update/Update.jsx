@@ -39,7 +39,7 @@ const Update = () => {
 
 
         try {
-            const response = await fetch(`https://brand-shop-server-ivtiu0s4h-almamun168652-gmailcom.vercel.app/products/${_id}`, {
+            const response = await fetch(`https://brand-shop-server-etvnzft76-almamun168652-gmailcom.vercel.app/products/${_id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",

@@ -29,21 +29,20 @@ const createdRoute = createBrowserRouter([
             {
                 path: '/details/:id',
                 element: <PrivateRoute><Details></Details></PrivateRoute>,
-                loader: ({params})=> fetch(`https://brand-shop-server-ivtiu0s4h-almamun168652-gmailcom.vercel.app/products/${params.id}`) 
+                loader: ({params})=> fetch(`https://brand-shop-server-etvnzft76-almamun168652-gmailcom.vercel.app/products/${params.id}`) 
             },
             {
                 path: '/update/:id',
                 element: <PrivateRoute><Update></Update></PrivateRoute>,
-                loader: ({params})=> fetch(`https://brand-shop-server-ivtiu0s4h-almamun168652-gmailcom.vercel.app/products/${params.id}`) 
+                loader: ({params})=> fetch(`https://brand-shop-server-etvnzft76-almamun168652-gmailcom.vercel.app/products/${params.id}`) 
             },
             {
                 path: '/myCarts',
-                element: <PrivateRoute><MyCarts></MyCarts></PrivateRoute>,
-                // loader: ()=> fetch(`https://brand-shop-server-ivtiu0s4h-almamun168652-gmailcom.vercel.app/carts`)
+                element: <PrivateRoute><MyCarts></MyCarts></PrivateRoute>
             },
             {
                 path: '/brand/:brand_name',
-                element: <PrivateRoute><BrandGallery></BrandGallery></PrivateRoute>,
+                element: <BrandGallery></BrandGallery>,
                 loader: ()=> fetch('/brand.json')
             },
             {
