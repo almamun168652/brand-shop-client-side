@@ -2,15 +2,21 @@ import { useLoaderData } from "react-router-dom";
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import swal from "sweetalert";
 import Rating from "react-rating";
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Details = () => {
 
+    
     const detailsProduct = useLoaderData();
-
+    const { user } = useContext(AuthContext);
 
     const { image, name, brand, type, price, rating, description } = detailsProduct || {}
 
-    const handleAddCart = async (detailsProduct) => {
+    const addCartData = {...detailsProduct , email: user.email};
+
+
+    const handleAddCart = async (addCartData) => {
 
         try {
             const response = await fetch("https://brand-shop-server-9hdb4ek57-almamun168652-gmailcom.vercel.app/carts", {
@@ -18,7 +24,7 @@ const Details = () => {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(detailsProduct),
+                body: JSON.stringify(addCartData),
             });
             const result = await response.json();
             console.log(result);
@@ -84,7 +90,7 @@ const Details = () => {
                 <h1 className="text-gray-500 my-1">{description}</h1>
 
                 <div className="flex justify-end mt-4 mb-1">
-                    <div onClick={() => handleAddCart(detailsProduct)}>
+                    <div onClick={() => handleAddCart(addCartData)}>
                         <button className="bg-sky-600 hover:bg-white text-white hover:text-sky-700 text-lg font-semibold border-2 flex gap-2 items-center px-4 py-1 rounded border-sky-600"><AiOutlineShoppingCart /> Add To Cart</button>
                     </div>
                 </div>
