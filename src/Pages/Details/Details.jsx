@@ -13,7 +13,7 @@ const Details = () => {
     const handleAddCart = async (detailsProduct) => {
 
         try {
-            const response = await fetch("https://brand-shop-server-liart.vercel.app/carts", {
+            const response = await fetch("https://brand-shop-server-9hdb4ek57-almamun168652-gmailcom.vercel.app/carts", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

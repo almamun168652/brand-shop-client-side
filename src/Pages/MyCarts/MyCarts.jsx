@@ -7,7 +7,7 @@ const MyCarts = () => {
     const [brandCarts, setBrandCarts] = useState([]);
 
     useEffect(()=>{
-        fetch('https://brand-shop-server-liart.vercel.app/carts')
+        fetch('https://brand-shop-server-9hdb4ek57-almamun168652-gmailcom.vercel.app/carts')
             .then(res => res.json())
             .then(data => setBrandCarts(data))
     }, [])

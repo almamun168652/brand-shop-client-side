@@ -29,12 +29,12 @@ const createdRoute = createBrowserRouter([
             {
                 path: '/details/:id',
                 element: <PrivateRoute><Details></Details></PrivateRoute>,
-                loader: ({params})=> fetch(`https://brand-shop-server-liart.vercel.app/products/${params.id}`) 
+                loader: ({params})=> fetch(`https://brand-shop-server-9hdb4ek57-almamun168652-gmailcom.vercel.app/products/${params.id}`) 
             },
             {
                 path: '/update/:id',
                 element: <PrivateRoute><Update></Update></PrivateRoute>,
-                loader: ({params})=> fetch(`https://brand-shop-server-liart.vercel.app/products/${params.id}`) 
+                loader: ({params})=> fetch(`https://brand-shop-server-9hdb4ek57-almamun168652-gmailcom.vercel.app/products/${params.id}`) 
             },
             {
                 path: '/myCarts',
