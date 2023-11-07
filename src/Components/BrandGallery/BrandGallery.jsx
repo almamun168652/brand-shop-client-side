@@ -27,7 +27,7 @@ const BrandGallery = () => {
 
     useEffect(() => {
 
-        fetch('https://brand-shop-server-9hdb4ek57-almamun168652-gmailcom.vercel.app/products')
+        fetch('http://localhost:5000/products')
             .then(res => res.json())
             .then(data => setBProducts(data));
 

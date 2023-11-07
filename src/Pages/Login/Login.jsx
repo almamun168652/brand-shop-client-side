@@ -3,29 +3,40 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import { AuthContext } from "../../Provider/AuthProvider";
 import swal from 'sweetalert';
+import axios from "axios";
 
 const Login = () => {
 
     const [err, setErr] = useState('');
     const [isShow, setIsShow] = useState(false)
 
-    const { googleLogin, logInUser } = useContext(AuthContext);
+    const { googleLogin, logInUser, } = useContext(AuthContext);
 
     const location = useLocation();
     const navigate = useNavigate();
 
     const handleGoogleLogin = () => {
+
         googleLogin()
             .then(res => {
+                const jwtEmail = res.user.email;
                 console.log(res);
                 swal("Good job!", "Request Successfully!", "success");
                 navigate(location.state ? location.state : '/');
+
+                axios.post('http://localhost:5000/jwt', jwtEmail, {
+                    withCredentials: true,
+                })
+                    .then(res => {
+                        console.log(res.data);
+                    })
+
             })
             .catch(err => {
                 setErr(err.code);
             })
     }
-    
+
     const handleLogin = (e) => {
         e.preventDefault();
         const email = e.target.email.value;
@@ -35,9 +46,17 @@ const Login = () => {
 
         logInUser(email, password)
             .then(res => {
-                console.log(res);
+                console.log(res.user.email);
+                const jwtEmail = res.user.email;
                 swal("Good job!", "Login Successfully!", "success");
                 navigate(location.state ? location.state : '/');
+
+                axios.post('http://localhost:5000/jwt', jwtEmail, {
+                    withCredentials: true,
+                })
+                    .then(res => {
+                        console.log(res.data);
+                    })
             })
             .catch(err => {
                 setErr(err.code);
@@ -59,7 +78,7 @@ const Login = () => {
                         Enter your details to Sign In.
                     </p>
                     {err ? <p className="text-red-600 max-w-[400px] text-sm text-center relative -bottom-4">{err}</p> : ''}
-                    <form onSubmit={handleLogin}  className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
+                    <form onSubmit={handleLogin} className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
                         <div className="mb-4 flex flex-col gap-6">
                             <div className="relative h-11 w-full min-w-[200px]">
                                 <input type="email" name="email"
@@ -97,7 +116,7 @@ const Login = () => {
                         <p className="mt-4 block text-center font-sans text-base font-normal leading-relaxed text-gray-700 antialiased">
                             Are you new? please<Link className="font-semibold text-sky-700" to='/register'> Sign Up</Link>
                         </p>
-                        <button onClick={handleGoogleLogin}  className="flex gap-2 items-center bg-white border border-gray-300 rounded-lg shadow-md px-6 py-2 text-sm font-medium text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+                        <button onClick={handleGoogleLogin} className="flex gap-2 items-center bg-white border border-gray-300 rounded-lg shadow-md px-6 py-2 text-sm font-medium text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
                             <img className="w-5" src="https://i.ibb.co/bQWtMgX/Google-G-Logo-svg-1-removebg-preview.png" alt="" />
                             <span>Continue with Google</span>
                         </button>
