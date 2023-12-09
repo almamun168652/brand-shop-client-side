@@ -2,6 +2,8 @@
 
 ## Live-Link: [Live-Link](https://brand-shop-bfc7f.web.app/)
 
+#### A simple tech products shopping web application using Html, Tailwind, React.js, Google-Firebase, Node.js, Express.js, MongoDB.
+
 ### Project Features
 - You can use our E-Tech website to buy various technology and electronics brand product.
 - Here you can see 6 different brand of technology.
